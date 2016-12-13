@@ -1,0 +1,43 @@
+<!-- index.html-->
+
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>List Data</h1>
+  <p class="lead">Lists of data from the Port of Vancouver</p>
+</div>
+
+<div class="container">
+  <input type="button" class="btn" onclick="location.href='/list?listType=ships';" value="JS Ship List" />
+  <input type="button" class="btn" onclick="location.href='/list?listType=shipTypes';" value="JS Ship Types List" />
+</div>
+
+<div class="container">
+  <h2>List of Ships</h2>
+  <p>A list of ships in the Port of Vancouver</p>            
+  <table class="table table-striped">
+  {% for entry in listEntries %}
+    {% if loop.index == 1 %}
+    <thead>
+      <tr>
+        {% for key in entry|reverse %}<th>{{ key }}</th>
+        {% endfor %}
+      {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for params in entry|reverse %}<td>{{ entry[params] }}</td>
+        {% else %}
+        <td>Unbelievable.  No entries here so far</td>
+        {% endfor %}
+      </tr>
+      {% else %}
+        <li><em>Unbelievable.  No entries here so far</em>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
