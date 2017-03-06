@@ -24,11 +24,13 @@ def list():
     
     print 
     
-    if listType == 'ships':
-        listEntries = ships.getShips()
-    elif listType == 'shipTypes': 
-        listEntries = ships.getShipTypes()
-    else: listEntries = ships.getShips()
+    if listType == 'pmvShips':
+        listEntries = ships.getPMVShips()
+    elif listType == 'pmvShipTypes': 
+        listEntries = ships.getPMVShipTypes()
+    elif listType == 'pilotShips': 
+        listEntries = ships.getPilotShips()
+    else: listEntries = ships.getPMVShips()
     
     return render_template('list.html', listEntries=listEntries)
     
